@@ -2,7 +2,6 @@ package org.andengine.opengl.texture;
 
 import java.io.IOException;
 
-import org.andengine.BuildConfig;
 import org.andengine.opengl.texture.atlas.source.ITextureAtlasSource;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.debug.Debug;
@@ -101,16 +100,12 @@ public interface ITexture {
 		public static class DebugTextureStateListener<T extends ITextureAtlasSource> implements ITextureStateListener {
 			@Override
 			public void onLoadedToHardware(final ITexture pTexture) {
-				if(BuildConfig.DEBUG) {
-					Debug.d("Texture loaded: " + pTexture.toString());
-				}
+				Debug.d("Texture loaded: " + pTexture.toString());
 			}
 
 			@Override
 			public void onUnloadedFromHardware(final ITexture pTexture) {
-				if(BuildConfig.DEBUG) {
-					Debug.d("Texture unloaded: " + pTexture.toString());
-				}
+				Debug.d("Texture unloaded: " + pTexture.toString());
 			}
 		}
 	}

@@ -1,6 +1,5 @@
 package org.andengine.entity.util;
 
-import org.andengine.BuildConfig;
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.util.debug.Debug;
 import org.andengine.util.time.TimeConstants;
@@ -50,10 +49,8 @@ public class FrameCountCrasher implements IUpdateHandler, TimeConstants {
 		if(this.mFramesLeft >= 0) {
 			frameLengths[this.mFramesLeft] = pSecondsElapsed;
 		} else {
-			if(BuildConfig.DEBUG) {
-				for(int i = frameLengths.length - 1; i >= 0; i--) {
-					Debug.d("Elapsed: " + frameLengths[i]);
-				}
+			for(int i = frameLengths.length - 1; i >= 0; i--) {
+				Debug.d("Elapsed: " + frameLengths[i]);
 			}
 
 			throw new RuntimeException();

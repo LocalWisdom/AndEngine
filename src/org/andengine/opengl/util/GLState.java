@@ -6,7 +6,6 @@ import java.util.Arrays;
 
 import javax.microedition.khronos.egl.EGLConfig;
 
-import org.andengine.BuildConfig;
 import org.andengine.engine.options.RenderOptions;
 import org.andengine.opengl.exception.GLException;
 import org.andengine.opengl.exception.GLFrameBufferException;
@@ -128,17 +127,15 @@ public class GLState {
 		this.mMaximumTextureUnits = this.getInteger(GLES20.GL_MAX_TEXTURE_IMAGE_UNITS);
 		this.mMaximumTextureSize = this.getInteger(GLES20.GL_MAX_TEXTURE_SIZE);
 
-		if(BuildConfig.DEBUG) {
-			Debug.d("VERSION: " + this.mVersion);
-			Debug.d("RENDERER: " + this.mRenderer);
-			Debug.d("EGLCONFIG: " + EGLConfig.class.getSimpleName() + "(Red=" + pConfigChooser.getRedSize() + ", Green=" + pConfigChooser.getGreenSize() + ", Blue=" + pConfigChooser.getBlueSize() + ", Alpha=" + pConfigChooser.getAlphaSize() + ", Depth=" + pConfigChooser.getDepthSize() + ", Stencil=" + pConfigChooser.getStencilSize() + ")");
-			Debug.d("EXTENSIONS: " + this.mExtensions);
-			Debug.d("MAX_VERTEX_ATTRIBS: " + this.mMaximumVertexAttributeCount);
-			Debug.d("MAX_VERTEX_UNIFORM_VECTORS: " + this.mMaximumVertexShaderUniformVectorCount);
-			Debug.d("MAX_FRAGMENT_UNIFORM_VECTORS: " + this.mMaximumFragmentShaderUniformVectorCount);
-			Debug.d("MAX_TEXTURE_IMAGE_UNITS: " + this.mMaximumTextureUnits);
-			Debug.d("MAX_TEXTURE_SIZE: " + this.mMaximumTextureSize);
-		}
+		Debug.d("VERSION: " + this.mVersion);
+		Debug.d("RENDERER: " + this.mRenderer);
+		Debug.d("EGLCONFIG: " + EGLConfig.class.getSimpleName() + "(Red=" + pConfigChooser.getRedSize() + ", Green=" + pConfigChooser.getGreenSize() + ", Blue=" + pConfigChooser.getBlueSize() + ", Alpha=" + pConfigChooser.getAlphaSize() + ", Depth=" + pConfigChooser.getDepthSize() + ", Stencil=" + pConfigChooser.getStencilSize() + ")");
+		Debug.d("EXTENSIONS: " + this.mExtensions);
+		Debug.d("MAX_VERTEX_ATTRIBS: " + this.mMaximumVertexAttributeCount);
+		Debug.d("MAX_VERTEX_UNIFORM_VECTORS: " + this.mMaximumVertexShaderUniformVectorCount);
+		Debug.d("MAX_FRAGMENT_UNIFORM_VECTORS: " + this.mMaximumFragmentShaderUniformVectorCount);
+		Debug.d("MAX_TEXTURE_IMAGE_UNITS: " + this.mMaximumTextureUnits);
+		Debug.d("MAX_TEXTURE_SIZE: " + this.mMaximumTextureSize);
 
 		this.mModelViewGLMatrixStack.reset();
 		this.mProjectionGLMatrixStack.reset();

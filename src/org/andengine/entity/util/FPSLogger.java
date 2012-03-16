@@ -1,6 +1,5 @@
 package org.andengine.entity.util;
 
-import org.andengine.BuildConfig;
 import org.andengine.util.debug.Debug;
 import org.andengine.util.time.TimeConstants;
 
@@ -72,12 +71,10 @@ public class FPSLogger extends AverageFPSCounter {
 	// ===========================================================
 
 	protected void onLogFPS() {
-		if(BuildConfig.DEBUG) {
-			Debug.d(String.format("FPS: %.2f (MIN: %.0f ms | MAX: %.0f ms)",
-				this.mFrames / this.mSecondsElapsed,
-				this.mShortestFrame * TimeConstants.MILLISECONDS_PER_SECOND,
-				this.mLongestFrame * TimeConstants.MILLISECONDS_PER_SECOND));
-		}
+		Debug.d(String.format("FPS: %.2f (MIN: %.0f ms | MAX: %.0f ms)",
+			this.mFrames / this.mSecondsElapsed,
+			this.mShortestFrame * TimeConstants.MILLISECONDS_PER_SECOND,
+			this.mLongestFrame * TimeConstants.MILLISECONDS_PER_SECOND));
 	}
 
 	// ===========================================================
