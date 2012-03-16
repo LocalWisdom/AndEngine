@@ -6,7 +6,7 @@ import org.andengine.util.call.Callable;
 import org.andengine.util.call.Callback;
 import org.andengine.util.progress.ProgressCallable;
 
-import android.app.Activity;
+
 import android.app.ProgressDialog;
 import android.support.v4.app.FragmentActivity;
 
