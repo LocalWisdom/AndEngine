@@ -11,7 +11,7 @@ import android.util.FloatMath;
  * @author Nicolas Gramlich
  * @since 20:42:15 - 17.12.2009
  */
-public final class MathUtils implements MathConstants {
+public class MathUtils implements MathConstants {
 	// ===========================================================
 	// Constants
 	// ===========================================================
