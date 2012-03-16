@@ -8,6 +8,7 @@ import org.andengine.util.progress.ProgressCallable;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.support.v4.app.FragmentActivity;
 
 /**
  * (c) 2010 Nicolas Gramlich 
@@ -16,7 +17,7 @@ import android.app.ProgressDialog;
  * @author Nicolas Gramlich
  * @since 18:35:28 - 29.08.2009
  */
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
 	// ===========================================================
 	// Constants
 	// ===========================================================
