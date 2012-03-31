@@ -2,11 +2,12 @@ package org.andengine.entity.sprite;
 
 import java.util.Arrays;
 
+import org.andengine.entity.sprite.vbo.ITiledSpriteVertexBufferObject;
 import org.andengine.opengl.shader.PositionColorTextureCoordinatesShaderProgram;
 import org.andengine.opengl.shader.ShaderProgram;
 import org.andengine.opengl.texture.region.ITiledTextureRegion;
+import org.andengine.opengl.vbo.DrawType;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
-import org.andengine.opengl.vbo.VertexBufferObject.DrawType;
 import org.andengine.util.math.MathUtils;
 import org.andengine.util.time.TimeConstants;
 
@@ -17,7 +18,7 @@ import org.andengine.util.time.TimeConstants;
  * @author Nicolas Gramlich
  * @since 15:25:46 - 10.03.2010
  */
-public class AnimatedSprite extends TiledSprite implements TimeConstants {
+public class AnimatedSprite extends TiledSprite {
 	// ===========================================================
 	// Constants
 	// ===========================================================

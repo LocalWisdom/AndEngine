@@ -13,9 +13,7 @@ import org.andengine.entity.modifier.IEntityModifier;
 import org.andengine.entity.modifier.IEntityModifier.IEntityModifierMatcher;
 import org.andengine.entity.scene.Scene;
 import org.andengine.util.IDisposable;
-import org.andengine.util.IMatcher;
 import org.andengine.util.adt.transformation.Transformation;
-import org.andengine.util.call.ParameterCallable;
 import org.andengine.util.color.Color;
 
 
@@ -56,6 +54,8 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 
 	public float getX();
 	public float getY();
+	public void setX(final float pX);
+	public void setY(final float pY);
 
 	public float getInitialX();
 	public float getInitialY();
@@ -296,30 +296,4 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	// ===========================================================
 	// Inner and Anonymous Classes
 	// ===========================================================
-
-	public interface IEntityMatcher extends IMatcher<IEntity> {
-		// ===========================================================
-		// Constants
-		// ===========================================================
-
-		// ===========================================================
-		// Methods
-		// ===========================================================
-
-		@Override
-		public boolean matches(final IEntity pEntity);
-	}
-
-	public interface IEntityParameterCallable extends ParameterCallable<IEntity> {
-		// ===========================================================
-		// Constants
-		// ===========================================================
-
-		// ===========================================================
-		// Methods
-		// ===========================================================
-
-		@Override
-		public void call(final IEntity pEntity);
-	}
 }
