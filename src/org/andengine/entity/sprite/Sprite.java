@@ -168,6 +168,7 @@ public class Sprite extends RectangularShape {
 		this.getTextureRegion().getTexture().bind(pGLState);
 
 		this.mSpriteVertexBufferObject.bind(pGLState, this.mShaderProgram);
+		pGLState.enableDither();
 	}
 
 	@Override
@@ -178,8 +179,8 @@ public class Sprite extends RectangularShape {
 	@Override
 	protected void postDraw(final GLState pGLState, final Camera pCamera) {
 		this.mSpriteVertexBufferObject.unbind(pGLState, this.mShaderProgram);
-
 		super.postDraw(pGLState, pCamera);
+		pGLState.disableDither();
 	}
 
 	@Override
