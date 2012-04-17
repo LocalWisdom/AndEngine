@@ -29,6 +29,8 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	// Constants
 	// ===========================================================
 
+	public static final int TAG_INVALID = Integer.MIN_VALUE;
+
 	// ===========================================================
 	// Methods
 	// ===========================================================
@@ -45,6 +47,9 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	public boolean isChildrenIgnoreUpdate();
 	public void setChildrenIgnoreUpdate(boolean pChildrenIgnoreUpdate);
 
+	public int getTag();
+	public void setTag(final int pTag);
+
 	public int getZIndex();
 	public void setZIndex(final int pZIndex);
 
@@ -57,10 +62,6 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	public void setX(final float pX);
 	public void setY(final float pY);
 
-	public float getInitialX();
-	public float getInitialY();
-
-	public void setInitialPosition();
 	public void setPosition(final IEntity pOtherEntity);
 	public void setPosition(final float pX, final float pY);
 
@@ -110,6 +111,9 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	public float getAlpha();
 	public Color getColor();
 
+	public void setRed(final float pRed);
+	public void setGreen(final float pGreen);
+	public void setBlue(final float pBlue);
 	public void setAlpha(final float pAlpha);
 	public void setColor(final Color pColor);
 	public void setColor(final float pRed, final float pGreen, final float pBlue);
@@ -182,14 +186,11 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	public void onDetached();
 
 	public void attachChild(final IEntity pEntity);
-	public boolean attachChild(final IEntity pEntity, final int pIndex);
 
-	public IEntity getChild(final int pIndex);
+	public IEntity getChild(final int pTag);
 	public IEntity getChild(final IEntityMatcher pEntityMatcher);
 	public IEntity getFirstChild();
 	public IEntity getLastChild();
-	public int getChildIndex(final IEntity pEntity);
-	public boolean setChildIndex(final IEntity pEntity, final int pIndex);
 
 	/**
 	 * @param pEntityMatcher
@@ -216,9 +217,6 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	 */
 	public <L extends List<S>, S extends IEntity> L queryForSubclass(final IEntityMatcher pEntityMatcher, final L pResult) throws ClassCastException;
 
-	public boolean swapChildren(final int pIndexA, final int pIndexB);
-	public boolean swapChildren(final IEntity pEntityA, final IEntity pEntityB);
-
 	/**
 	 * Immediately sorts the {@link IEntity}s based on their ZIndex. Sort is stable.
 	 */
@@ -234,7 +232,7 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	 * Sorts the {@link IEntity}s based on the {@link Comparator} supplied. Sort is stable.
 	 * @param pEntityComparator
 	 */
-	public void sortChildren(final Comparator<IEntity> pEntityComparator);
+	public void sortChildren(final IEntityComparator pEntityComparator);
 
 	public boolean detachSelf();
 
@@ -246,6 +244,14 @@ public interface IEntity extends IDrawHandler, IUpdateHandler, IDisposable {
 	 * Update-Thread or the GL-Thread!</b>
 	 */
 	public boolean detachChild(final IEntity pEntity);
+	/**
+	 * <b><i>WARNING:</i> This function should be called from within
+	 * {@link RunnableHandler#postRunnable(Runnable)} which is registered
+	 * to a {@link Scene} or the {@link Engine} itself, because otherwise
+	 * it may throw an {@link IndexOutOfBoundsException} in the
+	 * Update-Thread or the GL-Thread!</b>
+	 */
+	public IEntity detachChild(final int pTag);
 	/**
 	 * <b><i>WARNING:</i> This function should be called from within
 	 * {@link RunnableHandler#postRunnable(Runnable)} which is registered

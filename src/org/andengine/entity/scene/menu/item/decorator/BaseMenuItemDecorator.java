@@ -1,12 +1,12 @@
 package org.andengine.entity.scene.menu.item.decorator;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.handler.IUpdateHandler;
 import org.andengine.entity.IEntity;
+import org.andengine.entity.IEntityComparator;
 import org.andengine.entity.IEntityMatcher;
 import org.andengine.entity.IEntityParameterCallable;
 import org.andengine.entity.modifier.IEntityModifier;
@@ -124,11 +124,6 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	}
 	
 	@Override
-	public float getBaseWidth() {
-		return 0;
-	}
-
-	@Override
 	public float getWidthScaled() {
 		return this.mMenuItem.getWidthScaled();
 	}
@@ -138,11 +133,6 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 		return this.mMenuItem.getHeight();
 	}
 	
-	@Override
-	public float getBaseHeight() {
-		return this.mMenuItem.getBaseHeight();
-	}
-
 	@Override
 	public float getHeightScaled() {
 		return this.mMenuItem.getHeightScaled();
@@ -164,16 +154,6 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	}
 
 	@Override
-	public float getInitialX() {
-		return this.mMenuItem.getInitialX();
-	}
-
-	@Override
-	public float getInitialY() {
-		return this.mMenuItem.getInitialY();
-	}
-
-	@Override
 	public float getRed() {
 		return this.mMenuItem.getRed();
 	}
@@ -191,6 +171,21 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	@Override
 	public float getAlpha() {
 		return this.mMenuItem.getAlpha();
+	}
+
+	@Override
+	public void setRed(final float pRed) {
+		this.mMenuItem.setRed(pRed);
+	}
+
+	@Override
+	public void setGreen(final float pGreen) {
+		this.mMenuItem.setGreen(pGreen);
+	}
+
+	@Override
+	public void setBlue(final float pBlue) {
+		this.mMenuItem.setBlue(pBlue);
 	}
 
 	@Override
@@ -419,11 +414,6 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	}
 
 	@Override
-	public void setInitialPosition() {
-		this.mMenuItem.setInitialPosition();
-	}
-
-	@Override
 	public boolean isBlendingEnabled() {
 		return this.mMenuItem.isBlendingEnabled();
 	}
@@ -451,6 +441,16 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	@Override
 	public void setCullingEnabled(final boolean pCullingEnabled) {
 		this.mMenuItem.setCullingEnabled(pCullingEnabled);
+	}
+
+	@Override
+	public int getTag() {
+		return this.mMenuItem.getTag();
+	}
+
+	@Override
+	public void setTag(final int pTag) {
+		this.mMenuItem.setTag(pTag);
 	}
 
 	@Override
@@ -560,11 +560,6 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	}
 
 	@Override
-	public boolean attachChild(final IEntity pEntity, final int pIndex) {
-		return this.mMenuItem.attachChild(pEntity, pIndex);
-	}
-
-	@Override
 	public IEntity getFirstChild() {
 		return this.mMenuItem.getFirstChild();
 	}
@@ -575,23 +570,13 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	}
 
 	@Override
-	public IEntity getChild(final int pIndex) {
-		return this.mMenuItem.getChild(pIndex);
+	public IEntity getChild(final int pTag) {
+		return this.mMenuItem.getChild(pTag);
 	}
 
 	@Override
 	public IEntity getChild(IEntityMatcher pEntityMatcher) {
 		return this.mMenuItem.getChild(pEntityMatcher);
-	}
-
-	@Override
-	public int getChildIndex(final IEntity pEntity) {
-		return this.mMenuItem.getChildIndex(pEntity);
-	}
-
-	@Override
-	public boolean setChildIndex(final IEntity pEntity, final int pIndex) {
-		return this.mMenuItem.setChildIndex(pEntity, pIndex);
 	}
 
 	@Override
@@ -613,16 +598,6 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	}
 
 	@Override
-	public boolean swapChildren(final IEntity pEntityA, final IEntity pEntityB) {
-		return this.mMenuItem.swapChildren(pEntityA, pEntityB);
-	}
-
-	@Override
-	public boolean swapChildren(final int pIndexA, final int pIndexB) {
-		return this.mMenuItem.swapChildren(pIndexA, pIndexB);
-	}
-
-	@Override
 	public void sortChildren() {
 		this.mMenuItem.sortChildren();
 	}
@@ -633,7 +608,7 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	}
 
 	@Override
-	public void sortChildren(final Comparator<IEntity> pEntityComparator) {
+	public void sortChildren(final IEntityComparator pEntityComparator) {
 		this.mMenuItem.sortChildren(pEntityComparator);
 	}
 
@@ -645,6 +620,11 @@ public abstract class BaseMenuItemDecorator implements IMenuItem {
 	@Override
 	public boolean detachChild(final IEntity pEntity) {
 		return this.mMenuItem.detachChild(pEntity);
+	}
+
+	@Override
+	public IEntity detachChild(final int pTag) {
+		return this.mMenuItem.detachChild(pTag);
 	}
 
 	@Override
